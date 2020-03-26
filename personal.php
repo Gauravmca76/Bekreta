@@ -15,11 +15,11 @@
       <div data-role = "page">
       <div data-role = "header">
             <div class = "ui-body-a ui-body">
-               <img src="logoimages/bekreta.png" width="120" height="50">
+               <img src="logoimages/bekreta.png" width="100" height="40">
               <div data-role="navbar" class="steppro">
                 <ul class="list-unstyled multi-steps">
-               <li><a href = "#">Personal</a></li>
-               <li><a href = "#">Financials</a></li>
+               <li><a href = "personal.php">Personal</a></li>
+               <li><a href = "financial.php">Financials</a></li>
                <li><a href = "#">Business Plan</a></li>
                 </ul>
             </div><!-- /navbar -->
@@ -27,33 +27,35 @@
          </div>
          <div data-role = "main" class = "ui-content">
             <form>
-               <h2 align="center"> Personal </h2>
-            <h1> (I) Brief Your Milestone</h1>
-            <div data-role="collapsible" data-theme="b" data-content-theme="a" data-collapsed="true" style="width: 300px;">
-                <h4>Milestone</h4>
-               <form>
-                  <input type="text" name="date" placeholder="Enter Date(Ex. DD/MM/YYYY)">
-                  <input type="text" name="bmilestone" placeholder="Brief Milestone">
-                  <input type="submit" name="submit" value="submit">
-               </form>
-            </div>
-            <h1> (II) Core Team Members</h1>
-            <div data-role="collapsible" data-theme="b" data-content-theme="a" data-collapsed="true" style="width: 300px;">
-                <h4>Employee</h4>
-               <form>
-                  <input type="text" name="empname" placeholder="Employee Name">
-                  <input type="text" name="designation" placeholder="Designation">
-                  <input type="text" name="exp" placeholder="Exp.">
-                  <input type="text" name="about" placeholder="About Employee">
-                  <input type="submit" name="submit" value="submit">
-               </form>
-            </div>
-            <input type="submit" name="submit" value="Next">
+                     <h2 align="center"> Personal </h2>
+                     <h1> (I) Brief Your Milestone</h1>
+                     <div data-role="collapsible" data-theme="b" data-content-theme="a" data-collapsed="true" style="width: 300px;">
+                         <h4>Milestone</h4>
+                         <form>
+                           <input type="text" name="date" placeholder="Enter Date(Ex. DD/MM/YYYY)" value="" 
+                           onchange="dt(this.value)" required>
+                           <input type="text" name="bmilestone" placeholder="Brief Milestone" value="" 
+                           onchange="mstone(this.value)" required>
+                           <input type="submit" name="submit" value="submit">
+                        </form>
+                     </div>
+                     <h1> (II) Core Team Members</h1>
+                     <div data-role="collapsible" data-theme="b" data-content-theme="a" data-collapsed="true" style="width: 300px;">
+                      <h4>Employee</h4>
+                        <form>
+                           <input type="text" name="empname" placeholder="Employee Name" required>
+                           <input type="text" name="designation" placeholder="Designation" required>
+                           <input type="text" name="exp" placeholder="Exp." required>
+                           <input type="text" name="about" placeholder="About Employee" required>
+                           <input type="submit" name="submit" value="submit">
+                        </form>
+               </div>
+            <div style="margin-top:150px; padding: 0px 10px;"><input type="submit" name="submit" value="Next" data-inline="true"></div>
             </form>
          </div>
-         <div data-role = "footer">
+         <!-- <div data-role = "footer">
             <h1>Copyright</h1>   
-         </div>
+         </div> -->
       </div>
    </body>
 </html>
