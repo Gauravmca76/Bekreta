@@ -1,7 +1,7 @@
 <?php
-$tir=20;
-$tir1=10;
-$tp=70;
+$tir=200;
+$tir1=1000;
+$tp=7000;
 $dataPoints = array( 
 	array("label"=>"Principal", "y"=>$tp),
 	array("label"=>"Interest", "y"=>$tir),
@@ -20,10 +20,11 @@ $dataPoints = array(
 	<script src="./jquery.mobile/demos/js/jquery.js"></script>
 	<script src="./jquery.mobile/demos/_assets/js/index.js"></script>
 	<script src="./jquery.mobile/demos/js/jquery.mobile-1.4.5.min.js"></script>
+	<script src="./jquery.mobile/demos/js/Chart1.js"></script>
 	<script>
 window.onload = function() { 
 var chart = new CanvasJS.Chart("mycanvas", {
-	animationEnabled: true,
+	animationEnabled: false,
 	title: {
 		text: "EMI Calculation Pie Chart"
 	},
@@ -46,5 +47,4 @@ chart.render();
 		<a href="index.php">Next</a>
 	</div>
 </body>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </html>
