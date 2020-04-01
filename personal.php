@@ -29,27 +29,98 @@
             <form>
                      <h2 align="center"> Personal </h2>
                      <h1> (I) Brief Your Milestone</h1>
-                     <div data-role="collapsible" data-theme="b" data-content-theme="a" data-collapsed="true" style="width: 300px;">
+                     <div data-role="collapsible" data-theme="b" data-content-theme="a" data-collapsed="true" style="width: 250px;">
                          <h4>Milestone</h4>
                          <form>
-                           <input type="text" name="date" placeholder="Enter Date(Ex. DD/MM/YYYY)" value="" 
-                           onchange="dt(this.value)" required>
-                           <input type="text" name="bmilestone" placeholder="Brief Milestone" value="" 
-                           onchange="mstone(this.value)" required>
-                           <input type="submit" name="submit" value="submit">
+                           <input type="text" id="date" placeholder="Enter Date(Ex.DD/MM/YYYY)" value="" required>
+                           <input type="text" id="bmilestone" placeholder="Brief Milestone" value="" required>
+                           <button type="button" style="border-radius: 12px; padding: 14px 40px;font-size: 16px;background-color: #4CAF50;color: white;" class="add-row">Add Milestone</button>
                         </form>
                      </div>
+                  <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext delete-row" style="margin-left: 300px; margin-top: -50px;"></button>
+                     <table data-role="table" id="exptable" class="ui-responsive table-stroke">
+                        <thead>
+                           <tr>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td><input type="checkbox" name="record"></td>
+                              <td><input type="hidden" name="date[]" value=""></td>
+                              <td><input type="hidden" name="tmilestone[]" value=""></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <script type="text/javascript">
+                        $(".add-row").click(function(){
+                           var nametxt=$("#date").val();
+                           var mstone=$("#bmilestone").val();
+                           var markup="<tr><td><input type='checkbox' name='record'></td><td><input type=\"text\" name=\"date[]\" value=\""+nametxt+"\" style=\"border:none; border-bottom:2px solid black; background-color:#FFF0EC;\" readonly></td><td><input type=\"text\" name=\"tmilestone[]\" value=\""+mstone+"\" style=\"border:none; border-bottom:2px solid black; background-color:#FFF0EC;\" readonly></td></tr>";
+                           $("#exptable tbody").append(markup);
+                           $("#date").val("");
+                           $("#bmilestone").val("");
+                        });
+
+                        //Find and remove select table rows
+                        $(".delete-row").click(function(){
+                           $("#exptable tbody").find('input[name="record"]').each(function(){
+                              if($(this).is(":checked")){
+                                 $(this).parents("tr").remove();
+                              }
+                           });
+                        });
+                     </script>
                      <h1> (II) Core Team Members</h1>
-                     <div data-role="collapsible" data-theme="b" data-content-theme="a" data-collapsed="true" style="width: 300px;">
+                     <div data-role="collapsible" data-theme="b" data-content-theme="a" data-collapsed="true" style="width: 250px;">
                       <h4>Employee</h4>
                         <form>
-                           <input type="text" name="empname" placeholder="Employee Name" required>
-                           <input type="text" name="designation" placeholder="Designation" required>
-                           <input type="text" name="exp" placeholder="Exp." required>
-                           <input type="text" name="about" placeholder="About Employee" required>
-                           <input type="submit" name="submit" value="submit">
+                           <input type="text" id="empname" placeholder="Employee Name" required>
+                           <input type="text" id="designation" placeholder="Designation" required>
+                           <input type="text" id="exp" placeholder="Exp." required>
+                           <input type="text" id="about" placeholder="About Employee" required>
+                           <button type="button" style="border-radius: 12px; padding: 14px 40px;font-size: 16px;background-color: #4CAF50;color: white;" class="add-row1">Add Employee</button>
                         </form>
                </div>
+               <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext delete-row1" style="margin-left: 300px; margin-top: -40px;"></button>
+               <table data-role="table" id="exptable1" class="ui-responsive table-stroke">
+                  <thead>
+                     <tr>
+                        
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td><input type="checkbox" name="record"></td>
+                        <td><input type="hidden" name="empname[]" value=""></td>
+                        <td><input type="hidden" name="designation[]" value=""></td>
+                        <td><input type="hidden" name="exp[]" value=""></td>
+                        <td><input type="hidden" name="about[]" value=""></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <script type="text/javascript">
+                  $(".add-row1").click(function(){
+                     var empname=$("#empname").val();
+                     var desg=$("#designation").val();
+                     var ex=$("#exp").val();
+                     var ab=$("#about").val();
+                     var markon="<tr><td><input type='checkbox' name='record'></td><td><input type=\"text\" name=\"empname[]\" value=\""+empname+"\" style=\"border:none; border-bottom:2px solid black; background-color:#FFF0EC;\" readonly></td><td><input type=\"text\" name=\"designation[]\" value=\""+desg+"\" style=\"border:none; border-bottom:2px solid black; background-color:#FFF0EC;\" readonly></td><td><input type=\"text\" name=\"exp[]\" value=\""+ex+"\" style=\"border:none; border-bottom:2px solid black; background-color:#FFF0EC;\" readonly></td><td><input type=\"text\" name=\"about[]\" value=\""+ab+"\" style=\"border:none; border-bottom:2px solid black; background-color:#FFF0EC;\" readonly></td></tr>";
+                     $("#exptable1 tbody").append(markon);
+                     $("#empname").val("");
+                     $("#designation").val("");
+                     $("#exp").val("");
+                     $("#about").val("");
+                  });
+
+                  //Find and remove select table rows
+                        $(".delete-row1").click(function(){
+                           $("#exptable1 tbody").find('input[name="record"]').each(function(){
+                              if($(this).is(":checked")){
+                                 $(this).parents("tr").remove();
+                              }
+                           });
+                        });
+               </script>
             <div style="margin-top:150px; padding: 0px 10px;"><input type="submit" name="submit" value="Next" data-inline="true"></div>
             </form>
          </div>
