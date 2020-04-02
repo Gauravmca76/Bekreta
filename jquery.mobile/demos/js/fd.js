@@ -55,13 +55,13 @@ $(document).ready(function() {
                 dataese[i] = e.value;
             }
 
-            showincexp(datay1,datay2,datay3,dataes,datay1e,datay2e,datay3e,dataese);
+            /*showincexp(datay1,datay2,datay3,dataes,datay1e,datay2e,datay3e,dataese);*/
            
         }
 
        
         
-        function  showincexp(datay1,datay2,datay3,dataes,datay1e,datay2e,datay3e,dataese){
+        /*function  showincexp(datay1,datay2,datay3,dataes,datay1e,datay2e,datay3e,dataese){
 
             var len=dataes.length;
             var i=0;
@@ -179,27 +179,18 @@ $(document).ready(function() {
                 dataes[i] = e.value;
             }
         
-        }
-      
-          
-        
-        
-
-
-
-
-    
-    $("#nameopt").click(function() {
-        var nametxt = document.getElementById("nameopt").value;
-        if (nametxt == "Other") {
-            $("#nameopt").hide();
+        }*/    
+    $("#select_income").click(function() {
+        var nameinc = document.getElementById("select_income").value;
+        if (nameinc == "other") {
+            $("#select_income").hide();
             $("#nametxt").show();
         } else {
             $("#nametxt").hide();
         }
 
     });
-    $("#nameopt1").click(function() {
+    /*$("#nameopt1").click(function() {
         var nametxt = document.getElementById("nameopt1").value;
         if (nametxt == "Other") {
             $("#nameopt1").hide();
@@ -208,24 +199,24 @@ $(document).ready(function() {
             $("#nametxt1").hide();
         }
 
-    });
+    });*/
     $(".add-row").click(function() {
-        var nametxt = document.getElementById("nameopt").value;
-        if (nametxt == "Other") {
+        var nameinc = document.getElementById("select_income").value;
+        if (nameinc == "other") {
             var name = $("#nametxt").val();
             $("#nametxt").val("");
-            $("#nameopt").show();
-            $("#nameopt").val("--select--");
+            $("#select_income").show();
+            $("#select_income").val("--select--");
             $("#nametxt").hide();
 
         } else {
-            var name = $("#nameopt").val();
-            $("#nameopt").val("--select--");
+            var name = $("#select_income").val();
+            $("#select_income").val("--select--");
         }
 
-        var y1 = $("#y1").val();
-        var y2 = $("#y2").val();
-        var y3 = $("#y3").val();
+        var y1 = $("#iyear1").val();
+        var y2 = $("#iyear2").val();
+        var y3 = $("#iyear3").val();
         var markup =
             "<tr><td><input type='checkbox' name='record'></td><td><input type=\"hidden\" name=\"iname[]\" value=\"" +
             name + "\">" + name + "</td><td><input type=\"hidden\" name=\"iy1[]\" value=\"" + y1 +
@@ -233,14 +224,55 @@ $(document).ready(function() {
             y1 + "</td><td><input type=\"hidden\" name=\"iy2[]\" value=\"" + y2 + "\">" + y2 +
             "</td><td><input type=\"hidden\" name=\"iy3[]\" value=\"" + y3 + "\">" + y3 +
             "</td></tr>";
-        $("#inc").append(markup);
-        $("#y1").val("");
-        $("#y2").val("");
-        $("#y3").val("");
+        $("#expincome tbody").append(markup);
+        $("#iyear1").val("");
+        $("#iyear2").val("");
+        $("#iyear3").val("");
         getincexp();
-
     });
-    $(".update-row").click(function() {
+
+    // Find and remove selected table rows
+    $(".delete-row").click(function() {
+        $("#expincome tbody").find('input[name="record"]').each(function() {
+            if ($(this).is(":checked")) {
+                $(this).parents("tr").remove();
+                getincexp();
+            }
+        });
+    });
+
+    $(".edit-row").click(function() {
+        $("#expincome tbody").find('input[name="record"]').each(function() {
+            if ($(this).is(":checked")) {
+
+                var row = $(this).closest("tr")[0];
+                var name = row.cells[1].innerHTML.split('>', 2);
+
+                if ($("#update_select_income option[value='" + name[1] + "']").length > 0) {
+                    $("#update_select_income").show();
+                    $("#nametxt1").hide();
+                    $("#update_select_income").val(name[1]);
+
+                } else {
+                    $("#update_select_income").hide();
+                    $("#nametxt1").show();
+                    $("#nametxt1").val(name[1]);
+                }
+                var y1 = row.cells[2].innerHTML.split('>', 2);
+                var y2 = row.cells[3].innerHTML.split('>', 2);
+                var y3 = row.cells[4].innerHTML.split('>', 2);
+                $("#iyear11").val(y1[1]);
+                $("#iyear21").val(y2[1]);
+                $("#iyear31").val(y3[1]);
+                $("#popupUpdateLogin").modal({
+                    backdrop: false
+                });
+                $(this).parents("tr").remove();
+                getincexp();
+            }
+        });
+    });
+    /*$(".update-row").click(function() {
         var name1 = document.getElementById("nameopt1").value;
         var name = document.getElementById("nametxt1").value;
         if (name1 != "--select--") {
@@ -310,48 +342,7 @@ $(document).ready(function() {
         $("#y31").val("");
         getincexp();
     });
-
-    // Find and remove selected table rows
-    $(".delete-row").click(function() {
-        $("#inc").find('input[name="record"]').each(function() {
-            if ($(this).is(":checked")) {
-                $(this).parents("tr").remove();
-                getincexp();
-            }
-        });
-    });
-    $(".edit-row").click(function() {
-
-        $("#inc").find('input[name="record"]').each(function() {
-            if ($(this).is(":checked")) {
-
-                var row = $(this).closest("tr")[0];
-                var name = row.cells[1].innerHTML.split('>', 2);
-
-                if ($("#nameopt1 option[value='" + name[1] + "']").length > 0) {
-                    $("#nameopt1").show();
-                    $("#nametxt1").hide();
-                    $("#nameopt1").val(name[1]);
-
-                } else {
-                    $("#nameopt1").hide();
-                    $("#nametxt1").show();
-                    $("#nametxt1").val(name[1]);
-                }
-                var y1 = row.cells[2].innerHTML.split('>', 2);
-                var y2 = row.cells[3].innerHTML.split('>', 2);
-                var y3 = row.cells[4].innerHTML.split('>', 2);
-                $("#y11").val(y1[1]);
-                $("#y21").val(y2[1]);
-                $("#y31").val(y3[1]);
-                $("#updateModal").modal({
-                    backdrop: false
-                });
-                $(this).parents("tr").remove();
-                getincexp();
-            }
-        });
-    });
+    */
 
 
 
@@ -850,7 +841,7 @@ $(document).ready(function() {
 
 });
 
-//format
+/*//format
 
 
 function convertNumberToWords(amount) {
@@ -933,4 +924,4 @@ function convertNumberToWords(amount) {
         words_string = words_string.split("  ").join(" ");
     }
     return words_string;
-}
+}*/

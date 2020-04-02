@@ -55,7 +55,7 @@
                         $(".add-row").click(function(){
                            var nametxt=$("#date").val();
                            var mstone=$("#bmilestone").val();
-                           var markup="<tr><td><input type='checkbox' name='record'></td><td><input type=\"text\" name=\"date[]\" value=\""+nametxt+"\" style=\"border:none; border-bottom:2px solid black; background-color:#FFF0EC;\" readonly></td><td><input type=\"text\" name=\"tmilestone[]\" value=\""+mstone+"\" style=\"border:none; border-bottom:2px solid black; background-color:#FFF0EC;\" readonly></td></tr>";
+                           var markup="<tr><td><input type='checkbox' name='record'></td><td><input type=\"hidden\" name=\"date[]\" value=\""+nametxt+"\">"+nametxt+"</td><td><input type=\"hidden\" name=\"tmilestone[]\" value=\""+mstone+"\">"+mstone+"</td></tr>";
                            $("#exptable tbody").append(markup);
                            $("#date").val("");
                            $("#bmilestone").val("");
