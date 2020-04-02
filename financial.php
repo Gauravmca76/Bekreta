@@ -27,7 +27,7 @@
          </div>
          </div>
          <div data-role = "main" class = "ui-content" style="background: #ddd;">
-            <form>
+            <form method="post">
             <h1 align="center"> Financials in Rs</h1>
             <div class="card2">
                <h3>Incomes<a href="#popupInfo" data-rel="popup" data-transition="pop" class="ui-btn ui-btn-inline ui-icon-info ui-btn-icon-notext" title="Learn more" style="background-color: #ddd">Learn more</a>
@@ -37,7 +37,6 @@
                </div>
                <div>
           <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-edit ui-btn-icon-notext edit-row" style="margin-left: 250px;"></button>
-      <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext delete-row" style="margin-left: 300px; margin-top: -40px;"></button>
                </div>
                <div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">
                   <form method="post">
@@ -91,6 +90,7 @@
                        </div>
                    </form>
                </div>
+               <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext delete-row" style="margin-left: 300px; margin-top: -40px;"></button>
                <div>
                   <table data-role="table" id="expincome" class="ui-responsive table-stroke">
                      <thead>
@@ -104,7 +104,7 @@
                      </thead>
                      <tbody>
                         <tr>
-                           <td><a href="sales.php?planid="><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-edit ui-btn-icon-notext edit-row"></button></a></td>
+                           <td><a href="sales.php?planid="><button class="ui-btn ui-btn-b ui-shadow ui-corner-all ui-btn-icon-left ui-icon-edit ui-btn-icon-notext edit-row"></button></a></td>
                            <td><input type="hidden" name="sname" value="<?php echo"Net Sales";?>"><?php echo"Net Sales";?></td>
                            <td><input type="hidden" name="sval1" value="<?php echo"3000";?>"><?php echo"3000";?></td>
                            <td><input type="hidden" name="sval2" value="<?php echo"3000";?>"><?php echo"3000";?></td>
@@ -112,6 +112,17 @@
                         </tr>
                      </tbody>
                   </table>
+                  <script type="text/javascript">
+                     // Find and remove selected table rows
+    $(".delete-row").click(function() {
+        $("#expincome tbody").find('input[name="record"]').each(function() {
+            if ($(this).is(":checked")) {
+                $(this).parents("tr").remove();
+              /*  getincexp();*/
+            }
+        });
+    });
+                  </script>
                </div>
             </div><!-- card end-->
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -121,8 +132,12 @@
                <div data-role="popup" id="popupInfo1" class="ui-content" data-theme="a" style="max-width:350px;">
                     <p>Expenditure is an outflow of money to another person or group to pay for an item or service, or for a category of costs. For a tenant, rent is an expense. For students or parents, tuition is an expense. Buying food, clothing, furniture or an automobile is often referred to as an expense.</p>
                </div>
+               <div>
+          <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-edit ui-btn-icon-notext edit-row1" style="margin-left: 250px;"></button>
+      <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext delete-row1" style="margin-left: 300px; margin-top: -40px;"></button>
+               </div>
                <div data-role="popup" id="popupExpense" data-theme="a" class="ui-corner-all">
-                  <form>
+                  <form method="post">
                        <div style="padding:10px 20px;">
                         <h3 align="center"><B>Add Expense</B></h3>
                         <label for="select_expense" class="select">Expense</label>
@@ -144,6 +159,7 @@
                               <option value="Other Expenses">Other Expenses</option>
                               <option value="Other">Other</option>
                         </select>
+                        <input type="text" id="nametxtex" placeholder="Enter Income Name" style="display: none;">
                         <label for="year1">Year 1 Amount</label>
                         <input type="text" id="eyear1" value="" placeholder="Enter Amount" data-theme="a">
                         <label for="year2">Year 2 Amount</label>
@@ -155,7 +171,7 @@
                    </form>
                </div>
                <div>
-                  <table data-role="table" id="table-column-toggle" class="ui-responsive table-stroke">
+                  <table data-role="table" id="expexpenses" class="ui-responsive table-stroke">
                      <thead>
                         <tr>
                            <th>#</th>
@@ -167,10 +183,11 @@
                      </thead>
                      <tbody>
                         <tr>
-                           <th>Online Sales</th>
-                           <td>30000</td>
-                           <td>30000</td>
-                           <td>40000</td>
+                           <td><a href="sales.php?planid="><button class="ui-btn ui-btn-b ui-shadow ui-corner-all ui-btn-icon-left ui-icon-edit ui-btn-icon-notext edit-row"></button></a></td>
+                           <td><input type="hidden" name="mname" value="<?php echo"Marketing Expenses";?>"><?php echo"Marketing Expenses";?></td>
+                           <td><input type="hidden" name="mval1" value="<?php echo"3000";?>"><?php echo"3000";?></td>
+                           <td><input type="hidden" name="mval2" value="<?php echo"3000";?>"><?php echo"3000";?></td>
+                           <td><input type="hidden" name="mval3" value="<?php echo"3000";?>"><?php echo"3000";?></td>
                         </tr>
                      </tbody>
                   </table>
