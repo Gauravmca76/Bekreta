@@ -36,7 +36,7 @@
                     <p>Business income can be offset by business expenses and business losses. It can be either positive or negative in any given year.According to the Internal Revenue Service, business income may include income received from the sale of products or services. For example, fees received by a person from the regular practice of a profession are business income.Rents received by a person in the real estate business are business income. A business must include in income payments received in the form of property or services at the fair market value of the property or services.</p>
                </div>
                <div>
-          <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-edit ui-btn-icon-notext edit-row" style="margin-left: 250px;"></button>
+          <button type="button" data-transition="pop" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-edit ui-btn-icon-notext edit-row" data-rel="popup" style="margin-left: 250px;"></button>
                </div>
                <div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">
                   <form method="post">
@@ -60,7 +60,7 @@
                         <input type="text" id="iyear2" value="" placeholder="Enter Amount" data-theme="a">
                         <label for="year3">Year 3 Amount</label>
                         <input type="text" id="iyear3" value="" placeholder="Enter Amount" data-theme="a">
-                        <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-plus add-row">Add Income</button>
+                        <button type="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-plus add-row">Add Income</button>
                        </div>
                    </form>
                </div>
@@ -69,7 +69,7 @@
                        <div style="padding:10px 20px;">
                         <h3 align="center"><B>Income</B></h3>
                         <label for="update_select_income" class="select">Income</label>
-                        <select id="select_income">
+                        <select id="update_select_income">
                               <option value="--Select--">--Select--</option>
                               <option value="sale of services">Sale of Service</option>
                               <option value="sale of product">Sale of Product</option>
@@ -86,11 +86,11 @@
                         <input type="text" id="iyear21" value="" placeholder="Enter Amount" data-theme="a">
                         <label for="year3">Year 3 Amount</label>
                         <input type="text" id="iyear31" value="" placeholder="Enter Amount" data-theme="a">
-                        <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-btn-icon-left ui-icon-plus update-row">Add Income</button>
+                        <button type="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-plus update-row">Add Income</button>
                        </div>
                    </form>
                </div>
-               <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext delete-row" style="margin-left: 300px; margin-top: -40px;"></button>
+               <button type="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext delete-row" style="margin-left: 300px; margin-top: -40px;"></button>
                <div>
                   <table data-role="table" id="expincome" class="ui-responsive table-stroke">
                      <thead>
@@ -133,8 +133,8 @@
                     <p>Expenditure is an outflow of money to another person or group to pay for an item or service, or for a category of costs. For a tenant, rent is an expense. For students or parents, tuition is an expense. Buying food, clothing, furniture or an automobile is often referred to as an expense.</p>
                </div>
                <div>
-          <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-edit ui-btn-icon-notext edit-row1" style="margin-left: 250px;"></button>
-      <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext delete-row1" style="margin-left: 300px; margin-top: -40px;"></button>
+          <button type="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-edit ui-btn-icon-notext edit-row1" style="margin-left: 250px;"></button>
+      <button type="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext delete-row1" style="margin-left: 300px; margin-top: -40px;"></button>
                </div>
                <div data-role="popup" id="popupExpense" data-theme="a" class="ui-corner-all">
                   <form method="post">
@@ -159,14 +159,14 @@
                               <option value="Other Expenses">Other Expenses</option>
                               <option value="Other">Other</option>
                         </select>
-                        <input type="text" id="nametxtex" placeholder="Enter Income Name" style="display: none;">
+                        <input type="text" id="nametxtex" placeholder="Enter Expenses Name" style="display: none;">
                         <label for="year1">Year 1 Amount</label>
                         <input type="text" id="eyear1" value="" placeholder="Enter Amount" data-theme="a">
                         <label for="year2">Year 2 Amount</label>
                         <input type="text" id="eyear2" value="" placeholder="Enter Amount" data-theme="a">
                         <label for="year3">Year 3 Amount</label>
                         <input type="text" id="eyear3" value="" placeholder="Enter Amount" data-theme="a">
-                        <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-plus add-row1">Add Expense</button>
+                        <button type="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-plus add-row1">Add Expense</button>
                        </div>
                    </form>
                </div>
@@ -191,6 +191,18 @@
                         </tr>
                      </tbody>
                   </table>
+                  <script type="text/javascript">
+                     //Find and Remove Selected Table Row
+                     $(".delete-row1").click(function(){
+                        $("#expexpenses tbody").find('input[name="record"]').each(function(){
+                           if($(this).is(":checked"))
+                           {
+                              $(this).parents("tr").remove();
+                              /*getincexp();*/
+                           }
+                        });
+                     });
+                  </script>
                </div>
             </div><!-- card end-->
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -205,7 +217,7 @@
                        <div style="padding:10px 20px;">
                         <h3 align="center"><B>Add Asset</B></h3>
                         <label for="select_asset" class="select">Asset</label>
-                        <select name="select_asset" id="select_choice_1">
+                        <select id="select_asset">
                               <option value="--Select--">--Select--</option>
                               <option readonly><B>Current Assets</B></option>
                               <option value="Cash Balance">Cash Balance</option>
@@ -236,20 +248,24 @@
                               <option value="Other Non-Current Assets">Other Non-Current Assets</option>
                               <option value="Other">Other</option>
                         </select>
+                        <input type="text" id="nametxtas" placeholder="Enter Asset Name" style="display: none;">
                         <label for="year1">Year 1 Amount</label>
-                        <input type="text" name="year1" value="" placeholder="Enter Amount" data-theme="a">
+                        <input type="text" id="ayear1" value="" placeholder="Enter Amount" data-theme="a">
                         <label for="year2">Year 2 Amount</label>
-                        <input type="text" name="year2" value="" placeholder="Enter Amount" data-theme="a">
+                        <input type="text" id="ayear2" value="" placeholder="Enter Amount" data-theme="a">
                         <label for="year3">Year 3 Amount</label>
-                        <input type="text" name="year3" value="" placeholder="Enter Amount" data-theme="a">
-                        <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-plus">Add Assets</button>
+                        <input type="text" id="ayear3" value="" placeholder="Enter Amount" data-theme="a">
+                        <button type="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-plus add-row2">Add Assets</button>
                        </div>
                    </form>
                </div>
+      <button type="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-edit ui-btn-icon-notext edit-row2" style="margin-left: 250px;"></button>
+      <button type="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext delete-row2" style="margin-left: 300px; margin-top: -40px;"></button>
                <div>
-                  <table data-role="table" id="table-column-toggle" class="ui-responsive table-stroke">
+                  <table data-role="table" id="expassets" class="ui-responsive table-stroke">
                      <thead>
                         <tr>
+                           <th>#</th>
                            <th>Assets Name</th>
                            <th>Year 1</th>
                            <th>Year 2</th>
@@ -257,14 +273,18 @@
                         </tr>
                      </thead>
                      <tbody>
-                        <tr>
-                           <th>Online Sales</th>
-                           <td>30000</td>
-                           <td>30000</td>
-                           <td>40000</td>
-                        </tr>
                      </tbody>
                   </table>
+                  <script type="text/javascript">
+                     $(".delete-row2").click(function(){
+                        $("#expassets tbody").find('input[name="record"]').each(function(){
+                           if($(this).is(":checked"))
+                           {
+                              $(this).parents("tr").remove();
+                           }
+                        });
+                     });
+                  </script>
                </div>
             </div><!-- card end-->
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -279,7 +299,7 @@
                        <div style="padding:10px 20px;">
                         <h3 align="center"><B>Add Liabilities</B></h3>
                         <label for="select_liability" class="select">Liabilities</label>
-                        <select name="select_liability" id="select_choice_1">
+                        <select id="select_liability">
                               <option value="--Select--">--Select--</option>
                               <option readonly><B>Current Liabilities</B></option>
                               <option value="Account payable">Account payable</option>
@@ -313,20 +333,24 @@
                               <option value="Debt">Debt</option>
                               <option value="Other">Other</option>
                         </select>
+                        <input type="text" id="nametxtlb" placeholder="Enter Liability Name" style="display: none;">
                         <label for="year1">Year 1 Amount</label>
-                        <input type="text" name="year1" value="" placeholder="Enter Amount" data-theme="a">
+                        <input type="text" id="lyear1" value="" placeholder="Enter Amount" data-theme="a">
                         <label for="year2">Year 2 Amount</label>
-                        <input type="text" name="year2" value="" placeholder="Enter Amount" data-theme="a">
+                        <input type="text" id="lyear2" value="" placeholder="Enter Amount" data-theme="a">
                         <label for="year3">Year 3 Amount</label>
-                        <input type="text" name="year3" value="" placeholder="Enter Amount" data-theme="a">
-                        <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-plus">Add Liabilities</button>
+                        <input type="text" id="lyear3" value="" placeholder="Enter Amount" data-theme="a">
+                        <button type="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-plus add-row3">Add Liabilities</button>
                        </div>
                    </form>
                </div>
+   <button type="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-edit ui-btn-icon-notext edit-row3" style="margin-left: 250px;"></button>
+   <button type="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext delete-row3" style="margin-left: 300px; margin-top: -40px;"></button>
                <div>
-                  <table data-role="table" id="table-column-toggle" class="ui-responsive table-stroke">
+                  <table data-role="table" id="expliability" class="ui-responsive table-stroke">
                      <thead>
                         <tr>
+                           <th>#</th>
                            <th>Liabilities Name</th>
                            <th>Year 1</th>
                            <th>Year 2</th>
@@ -335,13 +359,25 @@
                      </thead>
                      <tbody>
                         <tr>
-                           <th>Online Sales</th>
-                           <td>30000</td>
-                           <td>30000</td>
-                           <td>40000</td>
+                           <td></td>
+                           <td><input type="hidden" name="lname[]" value="<?php echo"Owner Contribution";?>"><?php echo"Owner Contribution";?></td>
+                           <td><input type="hidden" name="ly1[]" value="<?php $n=2000000; echo $n;?>"><?php $n=2000000; echo $n;?></td>
+                           <td><input type="text" name="ly2[]" value=""></td>
+                           <td><input type="text" name="ly3[]" value=""></td>
                         </tr>
                      </tbody>
                   </table>
+                  <script type="text/javascript">
+                     //Find and Remove selected table row
+                     $(".delete-row3").click(function(){
+                        $("#expliability tbody").find('input[name="record"]').each(function(){
+                           if($(this).is(":checked"))
+                           {
+                              $(this).parents("tr").remove();
+                           }
+                        });
+                     });
+                  </script>
                </div>
             </div><!-- card end-->
             <input type="submit" name="submit" value="Submit" data-inline="true">

@@ -190,16 +190,16 @@ $(document).ready(function() {
         }
 
     });
-    /*$("#nameopt1").click(function() {
-        var nametxt = document.getElementById("nameopt1").value;
-        if (nametxt == "Other") {
-            $("#nameopt1").hide();
+    $("#update_select_income").click(function() {
+        var nameupinc = document.getElementById("update_select_income").value;
+        if (nameupinc == "other") {
+            $("#update_select_income").hide();
             $("#nametxt1").show();
         } else {
             $("#nametxt1").hide();
         }
-
-    });*/
+    });
+    //Add the row in table
     $(".add-row").click(function() {
         var nameinc = document.getElementById("select_income").value;
         if (nameinc == "other") {
@@ -208,12 +208,10 @@ $(document).ready(function() {
             $("#select_income").show();
             $("#select_income").val("--select--");
             $("#nametxt").hide();
-
         } else {
             var name = $("#select_income").val();
             $("#select_income").val("--select--");
         }
-
         var y1 = $("#iyear1").val();
         var y2 = $("#iyear2").val();
         var y3 = $("#iyear3").val();
@@ -230,29 +228,16 @@ $(document).ready(function() {
         $("#iyear3").val("");
         getincexp();
     });
-
-    // Find and remove selected table rows
-    $(".delete-row").click(function() {
-        $("#expincome tbody").find('input[name="record"]').each(function() {
-            if ($(this).is(":checked")) {
-                $(this).parents("tr").remove();
-                getincexp();
-            }
-        });
-    });
-
+    //Update the selected row table
     $(".edit-row").click(function() {
         $("#expincome tbody").find('input[name="record"]').each(function() {
             if ($(this).is(":checked")) {
-
                 var row = $(this).closest("tr")[0];
                 var name = row.cells[1].innerHTML.split('>', 2);
-
-                if ($("#update_select_income option[value='" + name[1] + "']").length > 0) {
+                if ($("#update_select_income option[value='"+name[1]+"']").length > 0) {
                     $("#update_select_income").show();
                     $("#nametxt1").hide();
                     $("#update_select_income").val(name[1]);
-
                 } else {
                     $("#update_select_income").hide();
                     $("#nametxt1").show();
@@ -264,40 +249,34 @@ $(document).ready(function() {
                 $("#iyear11").val(y1[1]);
                 $("#iyear21").val(y2[1]);
                 $("#iyear31").val(y3[1]);
-                $("#popupUpdateLogin").modal({
-                    backdrop: false
-                });
                 $(this).parents("tr").remove();
                 getincexp();
             }
         });
     });
-    /*$(".update-row").click(function() {
-        var name1 = document.getElementById("nameopt1").value;
+    //Update the selected row in table
+    $(".update-row").click(function() {
+        var name1 = document.getElementById("update_select_income").value;
         var name = document.getElementById("nametxt1").value;
         if (name1 != "--select--") {
-            var name = $("#nameopt1").val();
-            $("#nameopt1").val("--select--");
+            var name = $("#update_select_income").val();
+            $("#update_select_income").val("--select--");
 
         } else {
-            if ($("#nameopt1 option[value='" + name + "']").length > 0) {
-                var name = $("#nameopt1").val();
-                $("#nameopt1").val("--select--");
-
+            if ($("#update_select_income option[value='" + name + "']").length > 0) {
+                var name = $("#update_select_income").val();
+                $("#update_select_income").val("--select--");
             } else {
                 var name = $("#nametxt1").val();
                 $("#nametxt1").val("");
-                $("#nameopt1").show();
-                $("#nameopt1").val("--select--");
+                $("#update_select_income").show();
+                $("#update_select_income").val("--select--");
                 $("#nametxt1").hide();
             }
         }
-
-
-
-        var y1 = $("#y11").val();
-        var y2 = $("#y21").val();
-        var y3 = $("#y31").val();
+        var y1 = $("#iyear11").val();
+        var y2 = $("#iyear21").val();
+        var y3 = $("#iyear31").val();
         var markup =
             "<tr><td><input type='checkbox' name='record'></td><td><input type=\"hidden\" name=\"iname[]\" value=\"" +
             name + "\">" + name + "</td><td><input type=\"hidden\" name=\"iy1[]\" value=\"" + y1 +
@@ -305,12 +284,13 @@ $(document).ready(function() {
             y1 + "</td><td><input type=\"hidden\" name=\"iy2[]\" value=\"" + y2 + "\">" + y2 +
             "</td><td><input type=\"hidden\" name=\"iy3[]\" value=\"" + y3 + "\">" + y3 +
             "</td></tr>";
-        $("#inc").append(markup);
-        $("#y11").val("");
-        $("#y21").val("");
-        $("#y31").val("");
+        $("#expincome tbody").append(markup);
+        $("#iyear11").val("");
+        $("#iyear21").val("");
+        $("#iyear31").val("");
         getincexp();
     });
+    /*
     $(".cancel-row").click(function() {
         var nametxt = document.getElementById("nameopt1").value;
         if (nametxt == "Other") {
@@ -343,49 +323,45 @@ $(document).ready(function() {
         getincexp();
     });
     */
-
-
-
  //Exepnsee
 
-    $("#nameoptex").click(function() {
-        var nametxt = document.getElementById("nameoptex").value;
-        if (nametxt == "Other") {
-            $("#nameoptex").hide();
+    $("#select_expense").click(function() {
+        var nameex = document.getElementById("select_expense").value;
+        if (nameex == "Other") {
+            $("#select_expense").hide();
             $("#nametxtex").show();
         } else {
             $("#nametxtex").hide();
         }
 
     });
-    $("#nameopt1ex").click(function() {
-        var nametxt = document.getElementById("nameopt1ex").value;
-        if (nametxt == "Other") {
-            $("#nameopt1ex").hide();
+    /*$("#select_expense").click(function() {
+        var nameex = document.getElementById("select_expense").value;
+        if (nameex == "Other") {
+            $("#select_expense").hide();
             $("#nametxt1ex").show();
         } else {
             $("#nametxt1ex").hide();
         }
 
-    });
+    });*/
     $(".add-row1").click(function() {
-        var nametxt = document.getElementById("nameoptex").value;
-        if (nametxt == "Other") {
+        var nameex = document.getElementById("select_expense").value;
+        if (nameex == "Other") {
             var name = $("#nametxtex").val();
             $("#nametxtex").val("");
-            $("#nameoptex").show();
-            $("#nameoptex").val("--select--");
+            $("#select_expense").show();
+            $("#select_expense").val("--select--");
             $("#nametxtex").hide();
 
         } else {
-            var name = $("#nameoptex").val();
-            $("#nameoptex").val("--select--");
-            $("#nameoptex").show();
+            var name = $("#select_expense").val();
+            $("#select_expense").val("--select--");
+            $("#select_expense").show();
         }
-
-        var y1 = $("#y1ex").val();
-        var y2 = $("#y2ex").val();
-        var y3 = $("#y3ex").val();
+        var y1 = $("#eyear1").val();
+        var y2 = $("#eyear2").val();
+        var y3 = $("#eyear3").val();
         var markup =
             "<tr><td><input type='checkbox' name='record'></td><td><input type=\"hidden\" name=\"ename[]\" value=\"" +
             name + "\">" + name + "</td><td><input type=\"hidden\" name=\"ey1[]\" value=\"" + y1 +
@@ -393,13 +369,13 @@ $(document).ready(function() {
             y1 + "</td><td><input type=\"hidden\" name=\"ey2[]\" value=\"" + y2 + "\">" + y2 +
             "</td><td><input type=\"hidden\" name=\"ey3[]\" value=\"" + y3 + "\">" + y3 +
             "</td></tr>";
-        $("#exp").append(markup);
-        $("#y1ex").val("");
-        $("#y2ex").val("");
-        $("#y3ex").val("");
+        $("#expexpenses tbody").append(markup);
+        $("#eyear1").val("");
+        $("#eyear2").val("");
+        $("#eyear3").val("");
         getincexp();
     });
-    $(".update-row1").click(function() {
+    /*$(".update-row1").click(function() {
         var name1 = document.getElementById("nameopt1ex").value;
         var name = document.getElementById("nametxt1ex").value;
         if (name1 != "--select--") {
@@ -510,20 +486,20 @@ $(document).ready(function() {
                 getincexp();
             }
         });
-    });
+    });*/
 
  //Asset
-    $("#nameoptasset").click(function() {
-        var nametxt = document.getElementById("nameoptasset").value;
-        if (nametxt == "Other") {
-            $("#nameoptasset").hide();
-            $("#nametxtasset").show();
+    $("#select_asset").click(function() {
+        var nameas = document.getElementById("select_asset").value;
+        if (nameas == "Other") {
+            $("#select_asset").hide();
+            $("#nametxtas").show();
         } else {
-            $("#nametxtasset").hide();
+            $("#nametxtas").hide();
         }
 
     });
-    $("#nameopt1asset").click(function() {
+    /*$("#nameopt1asset").click(function() {
         var nametxt = document.getElementById("nameopt1asset").value;
         if (nametxt == "Other") {
             $("#nameopt1asset").hide();
@@ -532,25 +508,23 @@ $(document).ready(function() {
             $("#nametxt1asset").hide();
         }
 
-    });
-    $(".add-row3").click(function() {
-        var nametxt = document.getElementById("nameoptasset").value;
+    });*/
+    $(".add-row2").click(function() {
+        var nametxt = document.getElementById("select_asset").value;
         if (nametxt == "Other") {
-            var name = $("#nametxtasset").val();
-            $("#nametxtasset").val("");
-            $("#nameoptasset").show();
-            $("#nameoptasset").val("--select--");
-            $("#nametxtasset").hide();
-
+            var name = $("#nametxtas").val();
+            $("#nametxtas").val("");
+            $("#select_asset").show();
+            $("#select_asset").val("--select--");
+            $("#nametxtas").hide();
         } else {
-            var name = $("#nameoptasset").val();
-            $("#nameoptasset").val("--select--");
-            $("#nameoptasset").show();
+            var name = $("#select_asset").val();
+            $("#select_asset").val("--select--");
+            $("#select_asset").show();
         }
-
-        var y1 = $("#y1asset").val();
-        var y2 = $("#y2asset").val();
-        var y3 = $("#y3asset").val();
+        var y1 = $("#ayear1").val();
+        var y2 = $("#ayear2").val();
+        var y3 = $("#ayear3").val();
         var markup =
             "<tr><td><input type='checkbox' name='record'></td><td><input type=\"hidden\" name=\"aname[]\" value=\"" +
             name + "\">" + name + "</td><td><input type=\"hidden\" name=\"ay1[]\" value=\"" + y1 +
@@ -558,13 +532,12 @@ $(document).ready(function() {
             y1 + "</td><td><input type=\"hidden\" name=\"ay2[]\" value=\"" + y2 + "\">" + y2 +
             "</td><td><input type=\"hidden\" name=\"ay3[]\" value=\"" + y3 + "\">" + y3 +
             "</td></tr>";
-        $("#asset").append(markup);
-        $("#y1asset").val("");
-        $("#y2asset").val("");
-        $("#y3asset").val("");
-
+        $("#expassets tbody").append(markup);
+        $("#ayear1").val("");
+        $("#ayear2").val("");
+        $("#ayear3").val("");
     });
-    $(".update-row3").click(function() {
+    /*$(".update-row3").click(function() {
         var name1 = document.getElementById("nameopt1asset").value;
         var name = document.getElementById("nametxt1asset").value;
         if (name1 != "--select--") {
@@ -673,21 +646,20 @@ $(document).ready(function() {
 
             }
         });
-    });
+    });*/
 
 
  //Liabilities
-    $("#nameoptLiabilities").click(function() {
-        var nametxt = document.getElementById("nameoptLiabilities").value;
-        if (nametxt == "Other") {
-            $("#nameoptLiabilities").hide();
-            $("#nametxtLiabilities").show();
+    $("#select_liability").click(function() {
+        var namelb = document.getElementById("select_liability").value;
+        if (namelb == "Other") {
+            $("#select_liability").hide();
+            $("#nametxtlb").show();
         } else {
-            $("#nametxtLiabilities").hide();
+            $("#nametxtlb").hide();
         }
-
     });
-    $("#nameopt1Liabilities").click(function() {
+    /*$("#nameopt1Liabilities").click(function() {
         var nametxt = document.getElementById("nameopt1Liabilities").value;
         if (nametxt == "Other") {
             $("#nameopt1Liabilities").hide();
@@ -696,39 +668,9 @@ $(document).ready(function() {
             $("#nametxt1Liabilities").hide();
         }
 
-    });
-    $(".add-row4").click(function() {
-        var nametxt = document.getElementById("nameoptLiabilities").value;
-        if (nametxt == "Other") {
-            var name = $("#nametxtLiabilities").val();
-            $("#nametxtLiabilities").val("");
-            $("#nameoptLiabilities").show();
-            $("#nameoptLiabilities").val("--select--");
-            $("#nametxtLiabilities").hide();
-
-        } else {
-            var name = $("#nameoptLiabilities").val();
-            $("#nameoptLiabilities").val("--select--");
-            $("#nameoptLiabilities").show();
-        }
-
-        var y1 = $("#y1Liabilities").val();
-        var y2 = $("#y2Liabilities").val();
-        var y3 = $("#y3Liabilities").val();
-        var markup =
-            "<tr><td><input type='checkbox' name='record'></td><td><input type=\"hidden\" name=\"lname[]\" value=\"" +
-            name + "\">" + name + "</td><td><input type=\"hidden\" name=\"ly1[]\" value=\"" + y1 +
-            "\">" +
-            y1 + "</td><td><input type=\"hidden\" name=\"ly2[]\" value=\"" + y2 + "\">" + y2 +
-            "</td><td><input type=\"hidden\" name=\"ly3[]\" value=\"" + y3 + "\">" + y3 +
-            "</td></tr>";
-        $("#Liabilities").append(markup);
-        $("#y1Liabilities").val("");
-        $("#y2Liabilities").val("");
-        $("#y3Liabilities").val("");
-
-    });
-    $(".update-row4").click(function() {
+    });*/
+    
+    /*$(".update-row4").click(function() {
         var name1 = document.getElementById("nameopt1Liabilities").value;
         var name = document.getElementById("nametxt1Liabilities").value;
         if (name1 != "--select--") {
@@ -837,8 +779,35 @@ $(document).ready(function() {
 
             }
         });
+    });*/
+    $(".add-row3").click(function() {
+        var namelb = document.getElementById("select_liability").value;
+        if (namelb == "Other") {
+            var name = $("#nametxtlb").val();
+            $("#nametxtlb").val("");
+            $("#select_liability").show();
+            $("#select_liability").val("--select--");
+            $("#nametxtlb").hide();
+        } else {
+            var name = $("#select_liability").val();
+            $("#select_liability").val("--select--");
+            $("#select_liability").show();
+        }
+        var y1 = $("#lyear1").val();
+        var y2 = $("#lyear2").val();
+        var y3 = $("#lyear3").val();
+        var markup =
+            "<tr><td><input type='checkbox' name='record'></td><td><input type=\"hidden\" name=\"lname[]\" value=\"" +
+            name + "\">" + name + "</td><td><input type=\"hidden\" name=\"ly1[]\" value=\"" + y1 +
+            "\">" +
+            y1 + "</td><td><input type=\"hidden\" name=\"ly2[]\" value=\"" + y2 + "\">" + y2 +
+            "</td><td><input type=\"hidden\" name=\"ly3[]\" value=\"" + y3 + "\">" + y3 +
+            "</td></tr>";
+        $("#expliability tbody").append(markup);
+        $("#lyear1").val("");
+        $("#lyear2").val("");
+        $("#lyear3").val("");
     });
-
 });
 
 /*//format
