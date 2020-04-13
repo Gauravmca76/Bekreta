@@ -56,6 +56,7 @@
                            });
                         });
                      </script>
+                     <div style="position:absolute; margin-top:150px;">
                      <h1> (II) Core Team Members</h1>
                      <div data-role="collapsible" data-theme="b" data-content-theme="a" data-collapsed="true" style="width: 250px;">
                       <h4>Employee</h4>
@@ -68,13 +69,14 @@
                         </form>
                </div>
                <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext delete-row1" style="margin-left: 300px; margin-top: -40px;"></button>
+                     </div>
                <script type="text/javascript">
                   $(".add-row1").click(function(){
                      var empname=$("#empname").val();
                      var desg=$("#designation").val();
                      var ex=$("#exp").val();
                      var ab=$("#about").val();
-                     var markon="<tr><td><input type='checkbox' name='record'></td><td><input type=\"text\" name=\"empname[]\" value=\""+empname+"\" style=\"border:none; border-bottom:2px solid black; background-color:#FFF0EC;\" readonly></td><td><input type=\"text\" name=\"designation[]\" value=\""+desg+"\" style=\"border:none; border-bottom:2px solid black; background-color:#FFF0EC;\" readonly></td><td><input type=\"text\" name=\"exp[]\" value=\""+ex+"\" style=\"border:none; border-bottom:2px solid black; background-color:#FFF0EC;\" readonly></td><td><input type=\"text\" name=\"about[]\" value=\""+ab+"\" style=\"border:none; border-bottom:2px solid black; background-color:#FFF0EC;\" readonly></td></tr>";
+                     var markon="<tr><td><input type='checkbox' name='record'></td><td><input type=\"hidden\" name=\"empname[]\" value=\""+empname+"\">"+empname+"</td><td><input type=\"hidden\" name=\"designation[]\" value=\""+desg+"\">"+desg+"</td><td><input type=\"hidden\" name=\"exp[]\" value=\""+ex+"\">"+ex+"</td><td><input type=\"hidden\" name=\"about[]\" value=\""+ab+"\">"+ab+"</td></tr>";
                      $("#exptable1 tbody").append(markon);
                      $("#empname").val("");
                      $("#designation").val("");
@@ -91,9 +93,10 @@
                            });
                         });
                </script>
-            <div style="margin-top:350px; padding: 0px 10px;">
+            <div style="margin-top:350px;">
             <form method="post" action="#">
-             <table data-role="table" id="exptable" class="ui-responsive table-stroke" style="margin-top:-200px;">
+            <div style="position:absolute; margin-top:120px; width:500px;">
+             <table data-role="table" id="exptable" class="ui-responsive table-stroke milestone">
                         <thead>
                            <tr>
                            </tr>
@@ -102,7 +105,7 @@
                         <?php 
                            error_reporting(0);
                            include('db.php');
-                           $sql1="SELECT * FROM personal WHERE id = 11";
+                           $sql1="SELECT * FROM personal WHERE id = 1";
                            $result=mysqli_query($conn,$sql1);
                            $n=mysqli_num_rows($result);
                            if($n > 0)
@@ -128,8 +131,10 @@
                            ?>
                         </tbody>
             </table>
+            </div>
             <!-- Employee Table -->
-            <table data-role="table" id="exptable1" class="ui-responsive table-stroke" style="margin-top:-130px;">
+            <div style="position:absolute; margin-top:-40px; width:1000px;">
+            <table data-role="table" id="exptable1" class="ui-responsive table-stroke">
                   <thead>
                      <tr>
                      </tr>
@@ -137,20 +142,40 @@
                   <tbody>
                   <?php 
                   include('db.php');
-                  $sql2="SELECT * FROM personal WHERE id = 11";
+                  $sql2="SELECT * FROM personal WHERE id = 1";
                   $result1=mysqli_query($conn,$sql2);
-                  $n2=mysqli_num_rows($result2);
+                  $n2=mysqli_num_rows($result1);
+                  if($n2 > 0)
+                  {
+                     $row1=mysqli_fetch_assoc($result1);
+                     $empname=json_decode($row1['empname'],true);
+                     $design=json_decode($row1['design'],true);
+                     $exp=json_decode($row1['exp'],true);
+                     $about=json_decode($row1['about'],true);
+                  }
+                  $n3=sizeof($empname);
+                  $j=0;
+                  while($n3 > 0)
+                  {
                   ?>
                      <tr>
                         <td><input type="checkbox" name="record"></td>
-                        <td><input type="hidden" name="empname[]" value=""></td>
-                        <td><input type="hidden" name="designation[]" value=""></td>
-                        <td><input type="hidden" name="exp[]" value=""></td>
-                        <td><input type="hidden" name="about[]" value=""></td>
+                        <td><input type="hidden" name="empname[]" value="<?=$empname[$j]?>"><?=$empname[$j]?></td>
+                        <td><input type="hidden" name="designation[]" value="<?=$design[$j]?>"><?=$design[$j]?></td>
+                        <td><input type="hidden" name="exp[]" value="<?=$exp[$j]?>"><?=$exp[$j]?></td>
+                        <td><input type="hidden" name="about[]" value="<?=$about[$j]?>"><?=$about[$j]?></td>
                      </tr>
+                     <?php 
+                        $n3--;
+                        $j++;
+                     }
+                     ?>
                   </tbody>
                </table>
+               </div>
+               <div style="position:absolute; margin-top:200px;">
             <input type="submit" name="nxt_submit" value="Next" data-inline="true">
+            </div>
             </form>
             </div>
          </div>
@@ -160,3 +185,20 @@
       </div>
    </body>
 </html>
+<?php
+error_reporting(0);
+include('db.php');
+if(isset($_POST['nxt_submit']))
+{
+   $sql="INSERT INTO personal VALUES('','".json_encode($_POST['tdate'])."','".json_encode($_POST['tmilestone'])."','".json_encode($_POST['empname'])."','".json_encode($_POST['designation'])."','".json_encode($_POST['exp'])."','".json_encode($_POST['about'])."')";
+   if(mysqli_query($conn,$sql))
+   {
+      header("Location: financial.php");
+   }
+   else
+   {
+      echo"<script type='text/JavaScript'>alert('Data is not saved!!!')</script>";
+      header("Location: personal.php");
+   }
+}
+?>
