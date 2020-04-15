@@ -28,14 +28,14 @@
 			<form method="post" action="#">                     
 			<h2 align="center"> Personal </h2> 
       		 <h1> (I) Brief Your Milestone</h1>
-      <a href="#myPopup" data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-btn-b ui-corner-all ui-shadow ui-btn-inline">Milestone</a>
+      <a href="#myPopup" data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-plus ui-btn-icon-left ui-btn-b">Milestone</a>
       <div data-role="popup" id="myPopup" style="width:250px; height:200px; background-color:#ddd;">
         <h3 align="center">Brief Milestone</h3>
         <input type="text" id="bdate" placeholder="Enter Date(Ex.DD/MM/YYYY)" value="" required/>
         <input type="text" id="bmilestone" placeholder="Brief Milestone" value="" required/>
         <button type="button" style="border-radius: 12px; padding: 14px 40px;font-size: 16px;background-color: #4CAF50;color: white;" class="add-row">Add Milestone</button>
       </div>
-        <button type="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext delete-row" style="margin-left: 120px; margin-top: -50px; position:absolute;"></button>
+        <button type="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext delete-row" style="margin-left: 150px; margin-top: -50px; position:absolute;"></button>
       		 <table data-role="table" id="exptable" class="ui-responsive table-stroke">
                         <thead>
                            <tr>
@@ -72,7 +72,7 @@
                         </tbody>
                      </table>
                      <h1> (II) Core Team Members</h1>
-                     <a href="#myPopup1" data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-btn-b ui-corner-all ui-shadow ui-btn-inline">Employee</a>
+                     <a href="#myPopup1" data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-plus ui-btn-icon-left ui-btn-b">Employee</a>
                      <div data-role="popup" id="myPopup1" style="width:350px; height:300px; background-color:#ddd;">
                         <h3 align="center">Team Members Details</h3>
                         <input type="text" id="empname" placeholder="Enter Employee Name" value="" required/>
@@ -81,7 +81,7 @@
                         <input type="text" id="about" placeholder="Enter About" value="" required/>
                         <button type="button" style="border-radius: 12px; padding: 14px 40px;font-size: 16px;background-color: #4CAF50;color: white;" class="add-row1">Add Employee</button>
                      </div>
-               <button type="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext delete-row1" style="margin-left: 120px; margin-top: -50px; position:absolute;"></button><br>
+               <button type="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext delete-row1" style="margin-left: 150px; margin-top: -50px; position:absolute;"></button><br>
                <table data-role="table" id="emptable" class="ui-responsive table-stroke">
                <thead>
                <tr>
