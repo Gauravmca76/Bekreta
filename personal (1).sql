@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2020 at 11:05 AM
+-- Generation Time: Apr 16, 2020 at 12:01 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -43,7 +43,9 @@ CREATE TABLE `personal` (
 --
 
 INSERT INTO `personal` (`id`, `mdate`, `mname`, `empname`, `design`, `exp`, `about`) VALUES
-(1, '[\"20/02/2016\"]', '[\"Ac\"]', '[\"Gaurav Singh\"]', '[\"Programmer\"]', '[\"1\"]', '[\"Hardwork\"]');
+(1, '[\"20/02/2016\"]', '[\"Ac\"]', '[\"Gaurav Singh\"]', '[\"Programmer\"]', '[\"1\"]', '[\"Hardwork\"]'),
+(2, '[\"20/02/2016\",\"20/02/2016\"]', '[\"Ac\",\"Computers\"]', '[\"Gaurav Singh\",\"Aarti Pawar\"]', '[\"Programmer\"]', '[\"1\",\"1\"]', '[\"Hardwork\",\"smart\"]'),
+(3, '[\"20/02/2016\",\"20/02/2016\"]', '[\"Ac\",\"Computers\"]', '[\"Gaurav Singh\",\"Aarti Pawar\"]', '[\"Programmer\",\"Tester\"]', '[\"1\",\"1\"]', '[\"Hardwork\",\"Smart\"]');
 
 --
 -- Indexes for dumped tables
@@ -63,7 +65,7 @@ ALTER TABLE `personal`
 -- AUTO_INCREMENT for table `personal`
 --
 ALTER TABLE `personal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
