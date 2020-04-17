@@ -228,6 +228,16 @@ $(document).ready(function() {
         $("#iyear3").val("");
         getincexp();
     });
+
+    //Delete the selected row
+    $(".delete-row").click(function() {
+        $("#expincome tbody").find('input[name="record"]').each(function() {
+            if ($(this).is(":checked")) {
+                $(this).parents("tr").remove();
+              /*  getincexp();*/
+            }
+        });
+    });
     //Update the selected row table
     $(".edit-row").click(function() {
         $("#expincome tbody").find('input[name="record"]').each(function() {
@@ -374,6 +384,15 @@ $(document).ready(function() {
         $("#eyear2").val("");
         $("#eyear3").val("");
         getincexp();
+    });
+
+    $(".delete-row1").click(function() {
+        $("#expexpenses tbody").find('input[name="record"]').each(function() {
+            if ($(this).is(":checked")) {
+                $(this).parents("tr").remove();
+              /*  getincexp();*/
+            }
+        });
     });
     /*$(".update-row1").click(function() {
         var name1 = document.getElementById("nameopt1ex").value;
@@ -536,6 +555,15 @@ $(document).ready(function() {
         $("#ayear1").val("");
         $("#ayear2").val("");
         $("#ayear3").val("");
+    });
+
+    $(".delete-row2").click(function() {
+        $("#expassets tbody").find('input[name="record"]').each(function() {
+            if ($(this).is(":checked")) {
+                $(this).parents("tr").remove();
+              /*  getincexp();*/
+            }
+        });
     });
     /*$(".update-row3").click(function() {
         var name1 = document.getElementById("nameopt1asset").value;
@@ -807,6 +835,15 @@ $(document).ready(function() {
         $("#lyear1").val("");
         $("#lyear2").val("");
         $("#lyear3").val("");
+    });
+
+    $(".delete-row3").click(function() {
+        $("#expliability tbody").find('input[name="record"]').each(function() {
+            if ($(this).is(":checked")) {
+                $(this).parents("tr").remove();
+              /*  getincexp();*/
+            }
+        });
     });
 });
 
